@@ -21,7 +21,7 @@ It can be easily integrated into existing project with (run inside project root 
 
 or
 
-    wget --content-disposition -O - https://github.com/shyiko/mvnw/raw/master/bundle.tgz | tar xvz
+    wget --content-disposition -q -O - https://github.com/shyiko/mvnw/raw/master/bundle.tgz | tar xvz
 
 Another way would be manually to download and extract [bundle.tgz](https://github.com/shyiko/mvnw/raw/master/bundle.tgz).
 
