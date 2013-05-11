@@ -1,4 +1,4 @@
-# The Maven Wrapper
+## The Maven Wrapper
 
 > fork of [bdemers/maven-wrapper](https://github.com/bdemers/maven-wrapper)
 
