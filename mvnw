@@ -62,7 +62,7 @@ cd "`dirname \"$PRG\"`/"
 APP_HOME="`pwd -P`"
 cd "$SAVED"
 
-CLASSPATH=$APP_HOME/.maven/wrapper/maven-wrapper.jar
+CLASSPATH=$APP_HOME/.mvn/wrapper/maven-wrapper.jar
 
 # Determine the Java command to use to start the JVM.
 if [ -n "$JAVA_HOME" ] ; then
