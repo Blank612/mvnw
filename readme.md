@@ -1,29 +1,31 @@
-## The Maven Wrapper
+# The Maven Wrapper
 
 > fork of [bdemers/maven-wrapper](https://github.com/bdemers/maven-wrapper)
 
-The goodness of [gradlew](http://www.gradle.org/docs/current/userguide/gradle_wrapper.html) ported to be used with Maven.
+The goodness of [gradlew](http://www.gradle.org/docs/current/userguide/gradle_wrapper.html) ported to be used with Maven (Java 6+).
 
-For thus not familiar with gradlew, it's a wrapper allowing to build Gradle-based projects without the need to install Gradle beforehand.
-All that is needed is to add number of files to the root of the project. After that anyone who gets the sources (presumably through version control system) can build it with something similar to `./gradlew build` (or `gradlew.bat build` on Windows).
+## Installation
 
-The mvnw (Maven version of gradlew) consists of
+```sh
+# within project (root) directory:
+curl -Ls https://github.com/shyiko/mvnw/raw/master/bundle.tgz | tar xvz
+# or
+wget --content-disposition -q -O - https://github.com/shyiko/mvnw/raw/master/bundle.tgz \
+  | tar xvz
+```
 
-    mvnw # for *nix
-    mvnw.bat # for windows
-    .maven/wrapper/
-        maven-wrapper.jar
-        maven-wrapper.properties # change value of "distributionUrl" whenever you want to switch to a new version of Maven
+Another way would be to download and extract [bundle.tgz](https://github.com/shyiko/mvnw/raw/master/bundle.tgz).
 
-It can be easily integrated into existing project with (run inside project root directory):
+You should see following files (all of which are meant to be committed to VCS):
 
-    curl -Ls https://github.com/shyiko/mvnw/raw/master/bundle.tgz | tar xvz
+    mvnw # shell script to be used on Linux/Mac OS X
+    mvnw.bat # batch file for Windows
+    .mvn/wrapper/
+      maven-wrapper.jar
+      maven-wrapper.properties # contains mvnw configuration options, such as "distributionUrl"
 
-or
+## Usage
 
-    wget --content-disposition -q -O - https://github.com/shyiko/mvnw/raw/master/bundle.tgz | tar xvz
-
-Another way would be manually to download and extract [bundle.tgz](https://github.com/shyiko/mvnw/raw/master/bundle.tgz).
-
-Once mvnw is installed, use it just like you would use mvn, e.g. `./mvnw clean install`, `./mvnw package -DskipTests=true -s settings.xml`. It will automatically download and install Maven if needed.
+Use it just like you would use mvn, e.g. `./mvnw clean install`, `./mvnw package -DskipTests=true -s settings.xml`.
+It will automatically download and install Maven if needed.
 
