@@ -20,9 +20,14 @@ You should see following files (all of which are meant to be committed to VCS):
 
     mvnw # shell script to be used on Linux/Mac OS X
     mvnw.bat # batch file for Windows
-    .mvn/wrapper/
-      maven-wrapper.jar
-      maven-wrapper.properties # contains mvnw configuration options, such as "distributionUrl"
+    .mvn/
+      jvm.config # default jvm options* (omitted)
+      maven.config # default command line options* (omitted)
+      wrapper/
+        maven-wrapper.jar
+        maven-wrapper.properties # contains mvnw configuration options, such as "distributionUrl"
+
+\* see https://maven.apache.org/docs/3.3.1/release-notes.html
 
 ## Usage
 
