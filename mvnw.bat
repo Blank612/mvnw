@@ -92,11 +92,19 @@ cd "%EXEC_DIR%"
 
 :endDetectBaseDir
 
-IF NOT EXIST "%PROJECT_BASEDIR%\.mvn\jvm.config" goto endReadAdditionalConfig
+IF NOT EXIST "%PROJECT_BASEDIR%\.mvn\jvm.config" goto endReadAdditionalJvmConfig
 
 @setlocal EnableExtensions EnableDelayedExpansion
 for /F "usebackq delims=" %%a in ("%PROJECT_BASEDIR%\.mvn\jvm.config") do set JVM_CONFIG_MAVEN_OPTS=!JVM_CONFIG_MAVEN_OPTS! %%a
 @endlocal & set JVM_CONFIG_MAVEN_OPTS=%JVM_CONFIG_MAVEN_OPTS%
+
+:endReadAdditionalJvmConfig
+
+IF NOT EXIST "%PROJECT_BASEDIR%\.mvn\maven.config" goto endReadAdditionalConfig
+
+@setlocal EnableExtensions EnableDelayedExpansion
+for /F "usebackq delims=" %%a in ("%PROJECT_BASEDIR%\.mvn\maven.config") do set CONFIG_MAVEN_OPTS=!CONFIG_MAVEN_OPTS! %%a
+@endlocal & set CONFIG_MAVEN_OPTS=%CONFIG_MAVEN_OPTS%
 
 :endReadAdditionalConfig
 
@@ -105,7 +113,7 @@ for /F "usebackq delims=" %%a in ("%PROJECT_BASEDIR%\.mvn\jvm.config") do set JV
 set CLASSPATH=%APP_HOME%\.mvn\wrapper\maven-wrapper.jar
 
 @rem Execute Maven
-"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JVM_CONFIG_MAVEN_OPTS% %JAVA_OPTS% %MAVEN_OPTS% -classpath "%CLASSPATH%" "-Dmaven.multiModuleProjectDirectory=%PROJECT_BASEDIR%" org.apache.maven.wrapper.MavenWrapperMain %CMD_LINE_ARGS%
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JVM_CONFIG_MAVEN_OPTS% %JAVA_OPTS% %MAVEN_OPTS% -classpath "%CLASSPATH%" "-Dmaven.multiModuleProjectDirectory=%PROJECT_BASEDIR%" org.apache.maven.wrapper.MavenWrapperMain %CONFIG_MAVEN_OPTS% %CMD_LINE_ARGS%
 
 :end
 @rem End local scope for the variables with windows NT shell

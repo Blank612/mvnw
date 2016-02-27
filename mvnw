@@ -169,5 +169,6 @@ load() {
 
 PROJECT_BASEDIR=${MAVEN_BASEDIR:-$(find_project_basedir)}
 JVM_CONFIG_MAVEN_OPTS="$(load "$PROJECT_BASEDIR/.mvn/jvm.config")"
+CONFIG_MAVEN_OPTS="$(load "$PROJECT_BASEDIR/.mvn/maven.config")"
 
-exec "$JAVACMD" $DEFAULT_JVM_OPTS $JVM_CONFIG_MAVEN_OPTS $JAVA_OPTS $MAVEN_OPTS -classpath "$CLASSPATH" -Dmaven.multiModuleProjectDirectory="$PROJECT_BASEDIR" org.apache.maven.wrapper.MavenWrapperMain "$@"
+exec "$JAVACMD" $DEFAULT_JVM_OPTS $JVM_CONFIG_MAVEN_OPTS $JAVA_OPTS $MAVEN_OPTS -classpath "$CLASSPATH" -Dmaven.multiModuleProjectDirectory="$PROJECT_BASEDIR" org.apache.maven.wrapper.MavenWrapperMain $CONFIG_MAVEN_OPTS "$@"
