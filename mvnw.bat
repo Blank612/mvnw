@@ -66,12 +66,46 @@ goto execute
 set CMD_LINE_ARGS=%$
 
 :execute
+
+@rem taken from https://github.com/takari/maven-wrapper/blob/69f3c6dd1b07620f28c1fc8cb20e392afcd9e95b/mvnw
+
+set PROJECT_BASEDIR=%MAVEN_BASEDIR%
+IF NOT "%PROJECT_BASEDIR%"=="" goto endDetectBaseDir
+
+set EXEC_DIR=%CD%
+set WDIR=%EXEC_DIR%
+:findBaseDir
+IF EXIST "%WDIR%"\.mvn goto baseDirFound
+cd ..
+IF "%WDIR%"=="%CD%" goto baseDirNotFound
+set WDIR=%CD%
+goto findBaseDir
+
+:baseDirFound
+set PROJECT_BASEDIR=%WDIR%
+cd "%EXEC_DIR%"
+goto endDetectBaseDir
+
+:baseDirNotFound
+set PROJECT_BASEDIR=%EXEC_DIR%
+cd "%EXEC_DIR%"
+
+:endDetectBaseDir
+
+IF NOT EXIST "%PROJECT_BASEDIR%\.mvn\jvm.config" goto endReadAdditionalConfig
+
+@setlocal EnableExtensions EnableDelayedExpansion
+for /F "usebackq delims=" %%a in ("%PROJECT_BASEDIR%\.mvn\jvm.config") do set JVM_CONFIG_MAVEN_OPTS=!JVM_CONFIG_MAVEN_OPTS! %%a
+@endlocal & set JVM_CONFIG_MAVEN_OPTS=%JVM_CONFIG_MAVEN_OPTS%
+
+:endReadAdditionalConfig
+
 @rem Setup the command line
 
 set CLASSPATH=%APP_HOME%\.mvn\wrapper\maven-wrapper.jar
 
 @rem Execute Maven
-"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %MAVEN_OPTS% -classpath "%CLASSPATH%" org.apache.maven.wrapper.MavenWrapperMain %CMD_LINE_ARGS%
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JVM_CONFIG_MAVEN_OPTS% %JAVA_OPTS% %MAVEN_OPTS% -classpath "%CLASSPATH%" org.apache.maven.wrapper.MavenWrapperMain %CMD_LINE_ARGS%
 
 :end
 @rem End local scope for the variables with windows NT shell

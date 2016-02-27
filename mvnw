@@ -146,4 +146,28 @@ if $cygwin ; then
     esac
 fi
 
-exec "$JAVACMD" $DEFAULT_JVM_OPTS $JAVA_OPTS $MAVEN_OPTS -classpath "$CLASSPATH" org.apache.maven.wrapper.MavenWrapperMain "$@"
+# taken from https://github.com/takari/maven-wrapper/blob/69f3c6dd1b07620f28c1fc8cb20e392afcd9e95b/mvnw
+
+find_project_basedir() {
+  local basedir=$(pwd)
+  local wdir=$(pwd)
+  while [ "$wdir" != '/' ] ; do
+    if [ -d "$wdir"/.mvn ] ; then
+      basedir=$wdir
+      break
+    fi
+    wdir=$(cd "$wdir/.."; pwd)
+  done
+  echo "${basedir}"
+}
+
+load() {
+  if [ -f "$1" ]; then
+    echo "$(tr -s '\n' ' ' < "$1")"
+  fi
+}
+
+PROJECT_BASEDIR=${MAVEN_BASEDIR:-$(find_project_basedir)}
+JVM_CONFIG_MAVEN_OPTS="$(load "$PROJECT_BASEDIR/.mvn/jvm.config")"
+
+exec "$JAVACMD" $DEFAULT_JVM_OPTS $JVM_CONFIG_MAVEN_OPTS $JAVA_OPTS $MAVEN_OPTS -classpath "$CLASSPATH" org.apache.maven.wrapper.MavenWrapperMain "$@"
