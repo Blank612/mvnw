@@ -1,6 +1,6 @@
 # mvnw
 
-Like [gradlew](http://www.gradle.org/docs/current/userguide/gradle_wrapper.html) by for Maven (Java 6+).
+Like [gradlew](http://www.gradle.org/docs/current/userguide/gradle_wrapper.html) but for Maven (Java 6+).
 
 ## Adding `mvnw` to the project
 
