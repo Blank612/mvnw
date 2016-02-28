@@ -147,28 +147,9 @@ if $cygwin ; then
 fi
 
 # taken from https://github.com/takari/maven-wrapper/blob/69f3c6dd1b07620f28c1fc8cb20e392afcd9e95b/mvnw
+ld() { if [ -f "$1" ]; then echo "$(tr -s '\n' ' ' < "$1")"; fi }
 
-find_project_basedir() {
-  local basedir=$(pwd)
-  local wdir=$(pwd)
-  while [ "$wdir" != '/' ] ; do
-    if [ -d "$wdir"/.mvn ] ; then
-      basedir=$wdir
-      break
-    fi
-    wdir=$(cd "$wdir/.."; pwd)
-  done
-  echo "${basedir}"
-}
+JVM_CONFIG="$(ld "$APP_HOME/.mvn/jvm.config")"
+MAVEN_CONFIG="$(ld "$APP_HOME/.mvn/maven.config")"
 
-load() {
-  if [ -f "$1" ]; then
-    echo "$(tr -s '\n' ' ' < "$1")"
-  fi
-}
-
-PROJECT_BASEDIR=${MAVEN_BASEDIR:-$(find_project_basedir)}
-JVM_CONFIG_MAVEN_OPTS="$(load "$PROJECT_BASEDIR/.mvn/jvm.config")"
-CONFIG_MAVEN_OPTS="$(load "$PROJECT_BASEDIR/.mvn/maven.config")"
-
-exec "$JAVACMD" $DEFAULT_JVM_OPTS $JVM_CONFIG_MAVEN_OPTS $JAVA_OPTS $MAVEN_OPTS -classpath "$CLASSPATH" -Dmaven.multiModuleProjectDirectory="$PROJECT_BASEDIR" org.apache.maven.wrapper.MavenWrapperMain $CONFIG_MAVEN_OPTS "$@"
+exec "$JAVACMD" $DEFAULT_JVM_OPTS $JVM_CONFIG $JAVA_OPTS $MAVEN_OPTS -classpath "$CLASSPATH" -Dmaven.multiModuleProjectDirectory="$APP_HOME" org.apache.maven.wrapper.MavenWrapperMain $MAVEN_CONFIG "$@"

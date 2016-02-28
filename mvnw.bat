@@ -69,51 +69,28 @@ set CMD_LINE_ARGS=%$
 
 @rem taken from https://github.com/takari/maven-wrapper/blob/69f3c6dd1b07620f28c1fc8cb20e392afcd9e95b/mvnw
 
-set PROJECT_BASEDIR=%MAVEN_BASEDIR%
-IF NOT "%PROJECT_BASEDIR%"=="" goto endDetectBaseDir
-
-set EXEC_DIR=%CD%
-set WDIR=%EXEC_DIR%
-:findBaseDir
-IF EXIST "%WDIR%"\.mvn goto baseDirFound
-cd ..
-IF "%WDIR%"=="%CD%" goto baseDirNotFound
-set WDIR=%CD%
-goto findBaseDir
-
-:baseDirFound
-set PROJECT_BASEDIR=%WDIR%
-cd "%EXEC_DIR%"
-goto endDetectBaseDir
-
-:baseDirNotFound
-set PROJECT_BASEDIR=%EXEC_DIR%
-cd "%EXEC_DIR%"
-
-:endDetectBaseDir
-
-IF NOT EXIST "%PROJECT_BASEDIR%\.mvn\jvm.config" goto endReadAdditionalJvmConfig
+IF NOT EXIST "%APP_HOME%\.mvn\jvm.config" goto endReadJvmConfig
 
 @setlocal EnableExtensions EnableDelayedExpansion
-for /F "usebackq delims=" %%a in ("%PROJECT_BASEDIR%\.mvn\jvm.config") do set JVM_CONFIG_MAVEN_OPTS=!JVM_CONFIG_MAVEN_OPTS! %%a
-@endlocal & set JVM_CONFIG_MAVEN_OPTS=%JVM_CONFIG_MAVEN_OPTS%
+for /F "usebackq delims=" %%a in ("%APP_HOME%\.mvn\jvm.config") do set JVM_CONFIG=!JVM_CONFIG! %%a
+@endlocal & set JVM_CONFIG=%JVM_CONFIG%
 
-:endReadAdditionalJvmConfig
+:endReadJvmConfig
 
-IF NOT EXIST "%PROJECT_BASEDIR%\.mvn\maven.config" goto endReadAdditionalConfig
+IF NOT EXIST "%APP_HOME%\.mvn\maven.config" goto endReadMavenConfig
 
 @setlocal EnableExtensions EnableDelayedExpansion
-for /F "usebackq delims=" %%a in ("%PROJECT_BASEDIR%\.mvn\maven.config") do set CONFIG_MAVEN_OPTS=!CONFIG_MAVEN_OPTS! %%a
-@endlocal & set CONFIG_MAVEN_OPTS=%CONFIG_MAVEN_OPTS%
+for /F "usebackq delims=" %%a in ("%APP_HOME%\.mvn\maven.config") do set MAVEN_CONFIG=!MAVEN_CONFIG! %%a
+@endlocal & set MAVEN_CONFIG=%MAVEN_CONFIG%
 
-:endReadAdditionalConfig
+:endReadMavenConfig
 
 @rem Setup the command line
 
 set CLASSPATH=%APP_HOME%\.mvn\wrapper\maven-wrapper.jar
 
 @rem Execute Maven
-"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JVM_CONFIG_MAVEN_OPTS% %JAVA_OPTS% %MAVEN_OPTS% -classpath "%CLASSPATH%" "-Dmaven.multiModuleProjectDirectory=%PROJECT_BASEDIR%" org.apache.maven.wrapper.MavenWrapperMain %CONFIG_MAVEN_OPTS% %CMD_LINE_ARGS%
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JVM_CONFIG% %JAVA_OPTS% %MAVEN_OPTS% -classpath "%CLASSPATH%" "-Dmaven.multiModuleProjectDirectory=%APP_HOME%" org.apache.maven.wrapper.MavenWrapperMain %MAVEN_CONFIG% %CMD_LINE_ARGS%
 
 :end
 @rem End local scope for the variables with windows NT shell
