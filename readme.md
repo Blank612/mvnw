@@ -1,10 +1,8 @@
-# The Maven Wrapper
+# mvnw
 
-> fork of [bdemers/maven-wrapper](https://github.com/bdemers/maven-wrapper)
+Like [gradlew](http://www.gradle.org/docs/current/userguide/gradle_wrapper.html) by for Maven (Java 6+).
 
-The goodness of [gradlew](http://www.gradle.org/docs/current/userguide/gradle_wrapper.html) ported to be used with Maven (Java 6+).
-
-## Installation
+## Adding `mvnw` to the project
 
 ```sh
 # within project (root) directory:
