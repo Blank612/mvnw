@@ -90,7 +90,7 @@ for /F "usebackq delims=" %%a in ("%APP_HOME%\.mvn\maven.config") do set MAVEN_C
 set CLASSPATH=%APP_HOME%\.mvn\wrapper\maven-wrapper.jar
 
 @rem Execute Maven
-"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JVM_CONFIG% %JAVA_OPTS% %MAVEN_OPTS% -classpath "%CLASSPATH%" "-Dmaven.multiModuleProjectDirectory=%APP_HOME%" org.apache.maven.wrapper.MavenWrapperMain %MAVEN_CONFIG% %CMD_LINE_ARGS%
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JVM_CONFIG% %JAVA_OPTS% %MAVEN_OPTS% -classpath "%CLASSPATH%" -Dmaven.multiModuleProjectDirectory="%APP_HOME%" org.apache.maven.wrapper.MavenWrapperMain %MAVEN_CONFIG% %CMD_LINE_ARGS%
 
 :end
 @rem End local scope for the variables with windows NT shell
