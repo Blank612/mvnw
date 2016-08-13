@@ -3,9 +3,31 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.shyiko</groupId>
-    <artifactId>maven-wapper</artifactId>
+    <artifactId>mvnw</artifactId>
     <version>0.1.0-SNAPSHOT</version>
-    <name>Maven Wrapper</name>
+
+    <name>mvnw</name>
+    <description>Maven Wrapper</description>
+    <url>https://github.com/shyiko/mvnw</url>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <scm>
+        <connection>scm:git:git@github.com:shyiko/mvnw.git</connection>
+        <developerConnection>scm:git:git@github.com:shyiko/mvnw.git</developerConnection>
+        <url>git@github.com:shyiko/mvnw.git</url>
+    </scm>
+    <developers>
+        <developer>
+            <id>shyiko</id>
+            <email>stanley.shyiko@gmail.com</email>
+            <name>Stanley Shyiko</name>
+        </developer>
+    </developers>
 
     <dependencies>
         <dependency>
