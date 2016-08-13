@@ -95,11 +95,10 @@
                                     </tarfileset>
                                     <tarfileset dir="${project.basedir}">
                                         <include name="mvnw.bat"/>
-                                        <include name=".mvn/wrapper/maven-wrapper.jar"/>
                                         <include name=".mvn/wrapper/maven-wrapper.properties"/>
                                     </tarfileset>
                                     <tarfileset dir="${project.basedir}" fullpath=".mvn/wrapper/maven-wrapper.jar">
-                                        <include name="${project.build.directory}/${project.build.finalName}.jar"/>
+                                        <include name="target/${project.build.finalName}.jar"/>
                                     </tarfileset>
                                 </tar>
                                 <gzip destfile="${project.build.directory}/mvnw.tar.gz"
