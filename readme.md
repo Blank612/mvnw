@@ -1,34 +1,38 @@
 # mvnw
 
-Like [gradlew](http://www.gradle.org/docs/current/userguide/gradle_wrapper.html) but for Maven (Java 6+).
+Like [gradlew](http://www.gradle.org/docs/current/userguide/gradle_wrapper.html) but for Maven.
 
-## Adding `mvnw` to the project
+This fork:
+- JDK 6+ compatible.
+- used by [mysql-binlog-connector-java](https://github.com/shyiko/mysql-binlog-connector-java), [ktlint](https://github.com/shyiko/ktlint), ...
+ (which means you can count on it being maintained).
+- supports [default jvm/command line options](https://maven.apache.org/docs/3.3.1/release-notes.html) (Maven 3.3.1+)
+
+## Installation
+
+> (within project (root) directory)
 
 ```sh
-# within project (root) directory:
-curl -Ls https://github.com/shyiko/mvnw/raw/master/bundle.tgz | tar xvz
-# or
-wget --content-disposition -q -O - https://github.com/shyiko/mvnw/raw/master/bundle.tgz \
-  | tar xvz
+curl -Ls https://github.com/shyiko/mvnw/releases/download/0.1.0/mvnw.tar.gz | tar xvz
 ```
 
-Another way would be to download and extract [bundle.tgz](https://github.com/shyiko/mvnw/raw/master/bundle.tgz).
+> If you don't have curl installed - replace `curl -sL` with `wget -qO-`.
 
-You should see following files (all of which are meant to be committed to VCS):
+It will extract the following files (all of which are meant to be committed to VCS):
 
     mvnw # shell script to be used on Linux/Mac OS X
     mvnw.bat # batch file for Windows
     .mvn/
-      jvm.config # default jvm options* (omitted)
-      maven.config # default command line options* (omitted)
-      wrapper/
-        maven-wrapper.jar
-        maven-wrapper.properties # contains mvnw configuration options, such as "distributionUrl"
-
-\* see https://maven.apache.org/docs/3.3.1/release-notes.html
+    .mvn/jvm.config # default jvm options (omitted by default) (example: -Xmx512m)
+    .mvn/maven.config # default command line options (omitted by default) (example: -s settings.xml)
+    .mvn/wrapper/maven-wrapper.jar
+    .mvn/wrapper/maven-wrapper.properties # contains mvnw configuration options, such as "distributionUrl"
 
 ## Usage
 
-Use it just like you would use mvn, e.g. `./mvnw clean install`, `./mvnw package -DskipTests=true -s settings.xml`.
-It will automatically download and install Maven if needed.
+Instead of `mvn ...` use `./mvnw ...` (e.g. `./mvnw clean install`).
+It will automatically download and install Maven (if needed) (the exact version is specified in `.mvn/wrapper/maven-wrapper.properties`).
 
+## License
+
+[Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
