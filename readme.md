@@ -3,9 +3,9 @@
 Like [gradlew](http://www.gradle.org/docs/current/userguide/gradle_wrapper.html) but for Maven.
 
 This fork:
-- JDK 6+ compatible.
+- is JDK 6+ compatible;
 - used by [mysql-binlog-connector-java](https://github.com/shyiko/mysql-binlog-connector-java), [ktlint](https://github.com/shyiko/ktlint), ...
- (which means you can count on it being maintained).
+ (which means you can count on it being maintained);
 - supports [default jvm/command line options](https://maven.apache.org/docs/3.3.1/release-notes.html) (Maven 3.3.1+)
 
 ## Installation
@@ -18,7 +18,7 @@ curl -Ls https://github.com/shyiko/mvnw/releases/download/0.1.0/mvnw.tar.gz | ta
 
 > If you don't have curl installed - replace `curl -sL` with `wget -qO-`.
 
-It will extract the following files (all of which are meant to be committed to VCS):
+You'll get the following files (all of which are meant to be committed to VCS):
 
     mvnw # shell script to be used on Linux/Mac OS X
     mvnw.bat # batch file for Windows
