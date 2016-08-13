@@ -26,7 +26,7 @@ It will extract the following files (all of which are meant to be committed to V
     .mvn/jvm.config # default jvm options (omitted by default) (example: -Xmx512m)
     .mvn/maven.config # default command line options (omitted by default) (example: -s settings.xml)
     .mvn/wrapper/maven-wrapper.jar
-    .mvn/wrapper/maven-wrapper.properties # contains mvnw configuration options, such as "distributionUrl"
+    .mvn/wrapper/maven-wrapper.properties # contains mvnw config options, such as "distributionUrl"
 
 ## Usage
 
