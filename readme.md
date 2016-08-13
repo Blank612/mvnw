@@ -3,7 +3,8 @@
 Like [gradlew](http://www.gradle.org/docs/current/userguide/gradle_wrapper.html) but for Maven.
 
 This fork:
-- is JDK 6+ compatible;
+- is JDK 6+ compatible  
+(provided Maven is [<= 3.2.5](https://maven.apache.org/docs/history.html) (by default `.mvn/wrapper/maven-wrapper.properties` points to 3.3.9));
 - used by [mysql-binlog-connector-java](https://github.com/shyiko/mysql-binlog-connector-java), [ktlint](https://github.com/shyiko/ktlint), ...
  (which means you can count on it being maintained);
 - supports [default jvm/command line options](https://maven.apache.org/docs/3.3.1/release-notes.html) (Maven 3.3.1+)
