@@ -16,6 +16,7 @@
 
 package org.apache.maven.wrapper;
 
+import javax.net.ssl.HttpsURLConnection;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -79,6 +80,12 @@ public class DefaultDownloader
             URL url = address.toURL();
             out = new BufferedOutputStream( new FileOutputStream( destination ) );
             conn = url.openConnection();
+
+            if (conn instanceof HttpsURLConnection) {
+                HttpsURLConnection sslConn = (HttpsURLConnection) conn;
+                sslConn.setSSLSocketFactory(new DefaultSSLSocketFactory());
+            }
+
             final String userAgentValue = calculateUserAgent();
             conn.setRequestProperty( "User-Agent", userAgentValue );
             in = conn.getInputStream();
