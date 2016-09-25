@@ -15,6 +15,10 @@ This fork:
 
 ```sh
 curl -sL https://github.com/shyiko/mvnw/releases/download/0.1.0/mvnw.tar.gz | tar xvz
+
+# Maven version can be changed with
+(MAVEN_VERSION=3.2.5 && 
+  sed -iEe "s/[0-9]\+[.][0-9]\+[.][0-9]\+/${MAVEN_VERSION}/g" .mvn/wrapper/maven-wrapper.properties)
 ```
 
 > If you don't have curl installed - replace `curl -sL` with `wget -qO-`.
