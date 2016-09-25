@@ -14,7 +14,7 @@ This fork:
 > (within project (root) directory)
 
 ```sh
-curl -Ls https://github.com/shyiko/mvnw/releases/download/0.1.0/mvnw.tar.gz | tar xvz
+curl -sL https://github.com/shyiko/mvnw/releases/download/0.1.0/mvnw.tar.gz | tar xvz
 ```
 
 > If you don't have curl installed - replace `curl -sL` with `wget -qO-`.
