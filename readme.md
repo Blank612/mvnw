@@ -7,7 +7,8 @@ This fork:
 (provided Maven is [<= 3.2.5](https://maven.apache.org/docs/history.html) (by default `.mvn/wrapper/maven-wrapper.properties` points to 3.3.9));
 - used by [mysql-binlog-connector-java](https://github.com/shyiko/mysql-binlog-connector-java), [ktlint](https://github.com/shyiko/ktlint), ...
  (which means you can count on it being maintained);
-- supports [default jvm/command line options](https://maven.apache.org/docs/3.3.1/release-notes.html) (Maven 3.3.1+)
+- supports [default jvm/command line options](https://maven.apache.org/docs/3.3.1/release-notes.html) (Maven 3.3.1+);
+- does not require Maven to be installed in order to integrate mvnw into existing project.
 
 ## Installation
 
